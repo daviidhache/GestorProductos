@@ -1,9 +1,12 @@
+<%@page import="com.curso.service.PedidoService"%>
 <%@page import="com.curso.enums.Cat"%>
 <%@page import="com.curso.service.ProductoService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="com.curso.model.Producto"%>
+<%@ page import="com.curso.model.Pedido"%>
+
 <!DOCTYPE html>
 <!-- PÁGINA INDEX- GESTIÓN DE CRUD SOBRE PRODUCTO -->
 <html>
@@ -89,8 +92,8 @@
 						Double precioP = Double.valueOf(precio);
 						int stockP = Integer.valueOf(stock);
 						if (precioP <= 0 || stockP <= 0) {
-						out.println("<div class='text-danger'>*No puede hacer cantidades negativas</div>");
-						
+					out.println("<div class='text-danger'>*No puede hacer cantidades negativas</div>");
+
 						} else {
 					// Procedemos a crear producto
 					Cat cate = Cat.valueOf(cat.toUpperCase());
@@ -114,7 +117,7 @@
 						<th>Nombre</th>
 						<th>Categoría</th>
 						<th>Precio</th>
-						<th>Precio</th>
+						<th>Stock</th>
 						<th>Acciones</th>
 						<th></th>
 					</tr>
@@ -131,6 +134,39 @@
 							href="FrontController?opcion=modificar&id=<%=p.getId()%>">Modificar</a></td>
 						<td><a class="btn btn-danger"
 							href="FrontController?opcion=eliminar&id=<%=p.getId()%>">Eliminar</a></td>
+					</tr>
+					<%
+					}
+					%>
+				</table>
+			</div>
+			<div class="col-12">
+				<br>
+				<!-- SECCIÓN DE PEDIDOS -->
+				<h2>Pedidos</h2>
+				<a class="btn btn-warning" href="#">Nuevo pedido</a>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<td>Ref</td>
+							<td>Producto</td>
+							<td>Unidades</td>
+							<td>Fecha y hora</td>
+							<td>Acción</td>
+						</tr>
+					</thead>
+					<%
+					for (Pedido pe : PedidoService.getListPedidos()) {
+					%>
+					<tr>
+						<td><%=pe.getRef()%></td>
+						<td><%=pe.getProducto().getNombre()%></td>
+						<td><%=pe.getUnidades()%></td>
+						<td><%=pe.getFechayHora().toString()%></td>
+						<td><a class="btn btn-info"
+							href="#">Detalle
+								pedido</a></td>
+
 					</tr>
 					<%
 					}
