@@ -18,4 +18,6 @@ Clases:
      Pedido -> Clase que define las características del pedido.
      PedidoService -> Clase que actúa como servicio para operar sobre los pedidos.
 
+## Autores
 
+- [@daviidHache](https://github.com/daviidhache)
