@@ -13,10 +13,12 @@ Servlets:
 
 Clases:
     Producto -> Clase principal que define las características del producto.
+    Pedido -> Clase que define las propiedades del pedido.
 
     ProductoService -> Clase que actúa como servicio para las operaciones relacionadas con los productos.
+    PedidoService -> Clase que actúa como servicio para operar sobre los pedidos.
 
-//A continuar: Corregir duplicado de productos en lista.
+
 
 
 
