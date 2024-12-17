@@ -15,4 +15,7 @@ Clases:
 
     ProductoService -> Clase que actúa como servicio para las operaciones relacionadas con los productos.
 
+     Pedido -> Clase que define las características del pedido.
+     PedidoService -> Clase que actúa como servicio para operar sobre los pedidos.
+
 
