@@ -15,4 +15,4 @@ Clases:
 
     ProductoService -> Clase que actúa como servicio para las operaciones relacionadas con los productos.
 
-//A continuar: Corregir duplicado de productos en lista.
+
