@@ -86,11 +86,19 @@
 					String stock = request.getParameter("stock");
 					if ((nombre != null && !nombre.isBlank()) && (cat != null && !cat.isBlank())
 					&& (precio != null && !precio.isBlank()) && (stock != null && !stock.isBlank())) {
-						// Procedemos a crear producto
-						Cat cate = Cat.valueOf(cat.toUpperCase());
-						Producto p = new Producto(nombre, cate, Double.valueOf(precio), Integer.valueOf(stock));
-						// Añadir a la lista
-						ProductoService.getProductos().add(p);
+						Double precioP = Double.valueOf(precio);
+						int stockP = Integer.valueOf(stock);
+						if (precioP <= 0 || stockP <= 0) {
+						out.println("<div class='text-danger'>*No puede hacer cantidades negativas</div>");
+						
+						} else {
+					// Procedemos a crear producto
+					Cat cate = Cat.valueOf(cat.toUpperCase());
+					Producto p = new Producto(nombre, cate, precioP, stockP);
+					// Añadir a la lista
+					ProductoService.getProductos().add(p);
+
+						}
 
 					} else {
 						out.println("<div class='text-danger'>*No dejer campos vacios</div>");

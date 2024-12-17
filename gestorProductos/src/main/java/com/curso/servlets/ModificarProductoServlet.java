@@ -12,8 +12,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ModificarProductoServlet
- * Gestiona la modificación del producto
+ * Servlet implementation class ModificarProductoServlet Gestiona la
+ * modificación del producto
  */
 public class ModificarProductoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -30,20 +30,25 @@ public class ModificarProductoServlet extends HttpServlet {
 		if ((nombre != null && !nombre.isBlank()) && (cat != null && !cat.isBlank())
 				&& (precio != null && !precio.isBlank()) && (stock != null && !stock.isBlank())
 				&& (idProducto != null)) {
-			// Procedemos a modificar
-			Cat cate = Cat.valueOf(cat.toUpperCase());
-			Long idP = Long.valueOf(idProducto);
-			System.out.println("Id producto" + idP);
-			Producto pro = ProductoService.obtenerProductoById(idP);
-			System.out.println(pro);
-			System.out.println(pro.getClass());
-			pro.setNombre(nombre);
-			pro.setCat(cate);
-			pro.setPrecio(Double.valueOf(precio));
-			pro.setStock(Integer.valueOf(stock));
-			// ¿Porqué si uso Dispacher para volver a index.jsp, aparecen los campos
-			// duplicados ?
-			// Usando sendRedirect, no. Resolver!
+			Double precioP = Double.valueOf(precio);
+			int stockP = Integer.valueOf(stock);
+			if (stockP > 0 && precioP > 0) {
+				// Procedemos a modificar
+				Cat cate = Cat.valueOf(cat.toUpperCase());
+				Long idP = Long.valueOf(idProducto);
+				System.out.println("Id producto" + idP);
+				Producto pro = ProductoService.obtenerProductoById(idP);
+				System.out.println(pro);
+				System.out.println(pro.getClass());
+				pro.setNombre(nombre);
+				pro.setCat(cate);
+				pro.setPrecio(Double.valueOf(precio));
+				pro.setStock(Integer.valueOf(stock));
+				// ¿Porqué si uso Dispacher para volver a index.jsp, aparecen los campos
+				// duplicados ?
+				// Usando sendRedirect, no. Resolver!
+
+			}
 			response.sendRedirect("index.jsp");
 
 		}
